@@ -1,0 +1,9 @@
+---
+# Create symlink to host machine folder
+- name: Check if symlink exist
+  stat: path=/var/lib/docker
+  register: sym
+
+- name: check user exist
+  file: src=/vagrant/docker_datastore dest=/var/lib/docker state=link
+  when: ohai_etc.passwd.vagrant is defined and sym.islnk is not defined

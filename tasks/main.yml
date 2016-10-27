@@ -1,5 +1,8 @@
 ---
 # tasks file for docker.ubuntu
+- name: Include vagrant machine tasks
+  include: vagrant_task.yml
+
 - name: Fail if not a new release of Ubuntu
   fail:
     msg: "{{ ansible_distribution_version }} is not an acceptable version of Ubuntu for this role"
